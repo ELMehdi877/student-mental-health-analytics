@@ -1,0 +1,4 @@
+__pycache__/
+Data/clean_data.pkl
+models/temp_pipeline.joblib
+mental_health_pipeline.joblib

@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  airflow:
+    image: apache/airflow:2.9.2-python3.11
+    container_name: airflow_mental_health
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - _AIRFLOW_DB_MIGRATE=true
+      - _AIRFLOW_WWW_USER_CREATE=true
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./Data:/opt/airflow/data
+      - ./models:/opt/airflow/models
+    ports:
+      - "8080:8080"
+    command: standalone
